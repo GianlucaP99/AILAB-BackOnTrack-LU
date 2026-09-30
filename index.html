@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CyberSnake | Skills Validation</title>
+  <style>
+    :root { color-scheme: dark; --ink:#dffbf4; --muted:#91aaa7; --panel:#102521; --line:#2a554d; --lime:#a7ff4f; --cyan:#4ee8d2; --alert:#ffbd5c; --danger:#ff6e75; }
+    * { box-sizing: border-box; }
+    body { margin:0; min-height:100vh; display:grid; place-items:center; overflow-x:hidden; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color:var(--ink); background:radial-gradient(circle at 12% 7%, #174b42 0, transparent 27rem), radial-gradient(circle at 90% 100%, #173a44 0, transparent 28rem), #071512; }
+    body::before { content:""; position:fixed; inset:0; pointer-events:none; opacity:.13; background-image:linear-gradient(#81cbb720 1px, transparent 1px), linear-gradient(90deg,#81cbb720 1px,transparent 1px); background-size:30px 30px; }
+    .app { width:min(100%, 1040px); padding:32px 22px 42px; position:relative; }
+    header { display:flex; justify-content:space-between; align-items:end; gap:20px; margin-bottom:22px; }
+    .eyebrow { margin:0 0 5px; color:var(--cyan); font-size:.73rem; font-weight:800; letter-spacing:.15em; text-transform:uppercase; }
+    h1 { margin:0; font-size:clamp(2rem,5vw,3.8rem); line-height:.95; letter-spacing:-.065em; }
+    h1 span { color:var(--lime); }
+    .status { min-width:190px; padding:12px 16px; border:1px solid var(--line); border-radius:10px; background:#0a1c19c9; text-align:right; }
+    .status small { display:block; color:var(--muted); font-weight:700; text-transform:uppercase; letter-spacing:.08em; font-size:.65rem; }
+    .status strong { color:var(--lime); font-size:1.1rem; }
+    .game-shell { display:grid; grid-template-columns:minmax(280px, 1fr) 260px; gap:20px; padding:20px; border:1px solid var(--line); border-radius:18px; background:#0c211dcc; box-shadow:0 20px 80px #0008; backdrop-filter:blur(12px); }
+    .board-wrap { position:relative; width:100%; aspect-ratio:1; border:1px solid #397065; border-radius:12px; overflow:hidden; background:#061310; }
+    canvas { display:block; width:100%; height:100%; }
+    .side { display:flex; flex-direction:column; gap:14px; }
+    .metric { padding:14px; border:1px solid var(--line); border-radius:10px; background:#0a1a17; }
+    .metric p { margin:0 0 5px; color:var(--muted); font-size:.71rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; }
+    .metric strong { font-size:1.65rem; letter-spacing:-.05em; }
+    .progress { height:7px; overflow:hidden; border-radius:99px; background:#1c3b35; margin-top:9px; }
+    .progress span { display:block; height:100%; width:0; background:linear-gradient(90deg,var(--cyan),var(--lime)); transition:width .25s; }
+    .how { margin-top:auto; padding:14px; border-left:3px solid var(--cyan); color:var(--muted); background:#102a25; font-size:.85rem; line-height:1.45; }
+    .how b { color:var(--ink); }
+    button { border:0; border-radius:8px; padding:11px 14px; cursor:pointer; font:inherit; font-weight:800; color:#062019; background:var(--lime); transition:transform .15s, filter .15s; }
+    button:hover, button:focus-visible { transform:translateY(-2px); filter:brightness(1.08); outline:2px solid var(--cyan); outline-offset:2px; }
+    .secondary { color:var(--ink); background:#1b3b35; }
+    .overlay { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; padding:20px; background:#04100cd9; backdrop-filter:blur(7px); z-index:2; }
+    .card { width:min(100%,600px); padding:clamp(22px,5vw,38px); border:1px solid #467a6e; border-radius:16px; background:linear-gradient(145deg,#12332c,#0a1d19); box-shadow:0 18px 50px #0009; }
+    .card .tag { margin:0 0 10px; color:var(--cyan); font-size:.72rem; font-weight:900; letter-spacing:.13em; text-transform:uppercase; }
+    .card h2 { margin:0 0 11px; font-size:clamp(1.5rem,4vw,2.35rem); line-height:1.08; letter-spacing:-.04em; }
+    .card > p { margin:0 0 20px; color:#bbd3cd; line-height:1.5; }
+    .answers { display:grid; gap:10px; }
+    .answer { width:100%; padding:13px 14px; border:1px solid #356259; color:var(--ink); background:#0c2420; text-align:left; font-weight:650; }
+    .answer:hover { border-color:var(--cyan); background:#12352e; }
+    .answer.correct { border-color:var(--lime); color:#d9ffc2; background:#235426; }
+    .answer.incorrect { border-color:var(--danger); color:#ffd9dc; background:#51252a; }
+    .answer:disabled { cursor:default; transform:none; filter:none; }
+    .feedback { min-height:24px; margin:16px 0 0 !important; font-weight:750; }
+    .feedback.good { color:var(--lime); } .feedback.bad { color:#ff9ca0; }
+    .result-score { margin:18px 0 8px; color:var(--lime); font-size:4.1rem; font-weight:900; letter-spacing:-.09em; line-height:1; }
+    .hidden { display:none; }
+    @media (max-width:700px) { .app { padding:24px 14px; } header { align-items:start; flex-direction:column; } .status { text-align:left; } .game-shell { grid-template-columns:1fr; padding:13px; } .side { display:grid; grid-template-columns:1fr 1fr; } .how { grid-column:1/-1; } }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <header><div><p class="eyebrow">Cyber Academy · End-of-module challenge</p><h1>CYBER<span>SNAKE</span></h1></div><div class="status"><small>Validation status</small><strong id="statusText">In progress</strong></div></header>
+    <section class="game-shell" aria-label="CyberSnake game">
+      <div class="board-wrap"><canvas id="board" width="600" height="600" aria-label="Snake game board"></canvas>
+        <div id="overlay" class="overlay"><div id="startCard" class="card"><p class="tag">10 knowledge checks</p><h2>Eat. Answer. Validate.</h2><p>Guide the snake to a data block. Every block triggers a cybersecurity question. Answer all 10 to complete the challenge.</p><button id="startButton">Start challenge</button></div>
+        <div id="questionCard" class="card hidden" aria-live="polite"><p class="tag" id="questionMeta">Knowledge check</p><h2 id="questionText"></h2><div id="answers" class="answers"></div><p id="feedback" class="feedback"></p></div>
+        <div id="resultCard" class="card hidden" aria-live="polite"><p class="tag">Challenge complete</p><h2 id="resultTitle"></h2><div id="resultScore" class="result-score"></div><p id="resultDetail"></p><button id="restartButton">Play again</button></div></div>
+      </div>
+      <aside class="side"><div class="metric"><p>Blocks collected</p><strong><span id="blocks">0</span> / 10</strong><div class="progress"><span id="blockProgress"></span></div></div><div class="metric"><p>Correct answers</p><strong><span id="correct">0</span> / 10</strong><div class="progress"><span id="correctProgress"></span></div></div><div class="how"><b>Controls</b><br>Use arrow keys or <b>WASD</b>. Avoid the perimeter and your own trail. The game pauses whenever you collect a data block.</div></aside>
+    </section>
+  </main>
+  <script>
+    const questions = [
+      ['IAM','What is the principle of least privilege?','Giving everyone read-only access','Giving a user only the access needed for their task','Giving a user access only after their manager approves it',1],
+      ['IAM','What does multi-factor authentication require?','Two different usernames','At least two independent types of evidence','A password with at least two symbols',1],
+      ['IAM','What is privileged access management (PAM) primarily for?','Making all passwords longer','Controlling and monitoring powerful administrative accounts','Automatically granting admins access to every system',1],
+      ['IAM','What is a strong use of single sign-on (SSO)?','Using one shared account for a whole team','Authenticating once to access approved connected applications','Reusing one password on unrelated public websites',1],
+      ['IAM','Why should accounts be promptly deprovisioned after an employee leaves?','To free up email storage','To remove access that is no longer authorized','To make future hiring easier',1],
+      ['IAM','What is an access review intended to verify?','That users know their passwords','That assigned access is still appropriate','That every employee has administrator access',1],
+      ['IAM','Which option best protects a service account?','Use a memorable password and share it with the team','Give it a dedicated owner, minimal permissions, and managed credentials','Give it permanent domain administrator privileges',1],
+      ['IAM','What does role-based access control (RBAC) assign permissions based on?','A person’s job role','The time they logged in','The brand of their laptop',0],
+      ['GRC','What is the purpose of a risk assessment?','To guarantee that incidents never occur','To identify, evaluate, and prioritize risks for treatment','To list every possible technical vulnerability without context',1],
+      ['GRC','A security control is best described as:','A measure that reduces risk','A document that describes a company','A tool used only by the IT department',0],
+      ['GRC','What does risk appetite define?','The number of risks an organization has','The amount and type of risk an organization is willing to accept','The maximum number of policies an organization can publish',1],
+      ['GRC','What is the difference between a policy and a procedure?','A policy states direction; a procedure gives actionable steps','A policy is optional; a procedure is legally binding','They are two names for the same thing',0],
+      ['GRC','What is a residual risk?','A risk that has been completely eliminated','Risk remaining after controls are applied','The initial risk before any controls are considered',1],
+      ['GRC','Why collect audit evidence?','To demonstrate that controls operated as intended','To prove that an organization has no risks','To replace all written policies',0],
+      ['GRC','Which is the best owner for a business risk?','The business leader accountable for the affected objective','The newest employee in the IT team','An external attacker',0],
+      ['GRC','What should happen to an accepted risk?','It should be documented, approved at the right level, and monitored','It should be deleted from the risk register','It should automatically be transferred to the SOC',0],
+      ['SOC','What is a security operations center (SOC) primarily responsible for?','Designing office buildings','Monitoring, detecting, investigating, and responding to threats','Writing all company policies',1],
+      ['SOC','What is an indicator of compromise (IOC)?','Evidence that may suggest malicious activity','A guarantee that a system is fully secure','A type of employee performance review',0],
+      ['SOC','Why is alert triage important?','It prioritizes and validates alerts before deeper investigation','It ensures every alert is immediately reported to the CEO','It permanently deletes low-severity alerts without review',0],
+      ['SOC','What is the first priority during ransomware containment?','Prevent further spread by isolating affected systems','Pay the ransom immediately','Reinstall every device before collecting evidence',0],
+      ['SOC','What does a SIEM platform do?','Combines and analyzes security logs from multiple sources','Replaces all endpoint protection tools','Only stores paper-based incident reports',0],
+      ['SOC','What is a playbook in incident response?','A repeatable set of steps for handling a scenario','A list of games used for team building','A script that automatically closes every alert',0],
+      ['SOC','Why preserve evidence during an incident?','To support investigation, recovery, and possible legal needs','To make the incident report longer','To avoid notifying stakeholders',0],
+      ['SOC','What is the purpose of threat hunting?','Proactively searching for threats that may have evaded alerts','Waiting for more alerts before investigating','Blocking all internet traffic permanently',0],
+      ['AI Security','What is prompt injection?','An attempt to manipulate an AI system through crafted instructions','Adding a password prompt to an application','A method for speeding up a model’s responses',0],
+      ['AI Security','Which is the safest approach to sensitive data in AI prompts?','Avoid submitting it unless the approved system and controls allow it','Replace names with initials, then share any confidential document','Assume all AI tools automatically encrypt and isolate every prompt',0],
+      ['AI Security','What is a model hallucination?','A plausible but incorrect or unsupported model output','A model that refuses a harmful request','A security scan of the model’s source code',0],
+      ['AI Security','Why apply least privilege to AI tool integrations?','To limit what compromised or misused tools can access','To make the AI answer every question more quickly','To allow the model to choose its own permissions',0],
+      ['AI Security','What helps reduce the risk of training-data poisoning?','Validating data provenance and monitoring data quality','Training on as much unreviewed internet data as possible','Letting any user alter the training dataset',0],
+      ['AI Security','What is a key safeguard for AI-generated code?','Reviewing and testing it before use in production','Deploying it immediately because it was generated by AI','Assuming it cannot contain vulnerabilities',0]
+    ];
+
+    const canvas = document.getElementById('board'), ctx = canvas.getContext('2d');
+    const overlay = document.getElementById('overlay'), startCard = document.getElementById('startCard'), questionCard = document.getElementById('questionCard'), resultCard = document.getElementById('resultCard');
+    const cells = 20, cell = canvas.width / cells, totalQuestions = 10;
+    let snake, direction, nextDirection, food, selectedQuestions, questionIndex, correctAnswers, running, timer;
+    const shuffle = a => [...a].sort(() => Math.random() - .5);
+    function resetGame() { snake=[{x:10,y:10},{x:9,y:10},{x:8,y:10}]; direction={x:1,y:0}; nextDirection=direction; food={x:15,y:10}; selectedQuestions=shuffle(questions).slice(0,totalQuestions); questionIndex=0; correctAnswers=0; running=false; updateStats(); draw(); }
+    function updateStats() { document.getElementById('blocks').textContent=questionIndex; document.getElementById('correct').textContent=correctAnswers; document.getElementById('blockProgress').style.width=(questionIndex/totalQuestions*100)+'%'; document.getElementById('correctProgress').style.width=(correctAnswers/totalQuestions*100)+'%'; }
+    function randomFood() { const open=[]; for(let y=0;y<cells;y++) for(let x=0;x<cells;x++) if(!snake.some(s=>s.x===x&&s.y===y)) open.push({x,y}); return open[Math.floor(Math.random()*open.length)]; }
+    function draw() { ctx.fillStyle='#061310'; ctx.fillRect(0,0,600,600); ctx.strokeStyle='#133b34'; ctx.lineWidth=1; for(let i=0;i<=cells;i++){ctx.beginPath();ctx.moveTo(i*cell,0);ctx.lineTo(i*cell,600);ctx.moveTo(0,i*cell);ctx.lineTo(600,i*cell);ctx.stroke();} ctx.fillStyle='#ffbd5c'; ctx.fillRect(food.x*cell+5,food.y*cell+5,cell-10,cell-10); snake.forEach((s,i)=>{ctx.fillStyle=i?'#77dca8':'#a7ff4f';ctx.fillRect(s.x*cell+2,s.y*cell+2,cell-4,cell-4);}); }
+    function tick() { if(!running) return; direction=nextDirection; const head={x:snake[0].x+direction.x,y:snake[0].y+direction.y}; if(head.x<0||head.x>=cells||head.y<0||head.y>=cells||snake.some(s=>s.x===head.x&&s.y===head.y)){ gameOver(); return; } snake.unshift(head); if(head.x===food.x&&head.y===food.y){ running=false; clearInterval(timer); presentQuestion(); } else snake.pop(); draw(); }
+    function showOnly(card) { [startCard,questionCard,resultCard].forEach(c=>c.classList.toggle('hidden',c!==card)); overlay.classList.remove('hidden'); }
+    function start() { resetGame(); overlay.classList.add('hidden'); running=true; timer=setInterval(tick,125); }
+    function presentQuestion() { const q=selectedQuestions[questionIndex]; document.getElementById('questionMeta').textContent=`${q[0]} · question ${questionIndex+1} of ${totalQuestions}`; document.getElementById('questionText').textContent=q[1]; const answers=document.getElementById('answers'); answers.innerHTML=''; document.getElementById('feedback').textContent=''; document.getElementById('feedback').className='feedback'; shuffle(q.slice(2,5).map((text,i)=>({text, correct:i===q[5]}))).forEach(answer=>{const b=document.createElement('button'); b.className='answer'; b.textContent=answer.text; b.onclick=()=>answerQuestion(answer,b); answers.appendChild(b);}); showOnly(questionCard); }
+    function answerQuestion(answer, button) { const choices=[...document.querySelectorAll('.answer')]; choices.forEach(b=>b.disabled=true); const feedback=document.getElementById('feedback'); if(answer.correct){correctAnswers++; button.classList.add('correct'); feedback.textContent='Correct. Your cyber instincts are online.'; feedback.classList.add('good');}else {button.classList.add('incorrect'); choices.find(b=>b.textContent===selectedQuestions[questionIndex][2+selectedQuestions[questionIndex][5]]).classList.add('correct'); feedback.textContent='Not quite. The highlighted answer is the strongest choice.'; feedback.classList.add('bad');} updateStats(); setTimeout(()=>{questionIndex++; if(questionIndex===totalQuestions) finish(); else { food=randomFood(); overlay.classList.add('hidden'); running=true; timer=setInterval(tick,125); draw(); }},1400); }
+    function gameOver() { clearInterval(timer); document.getElementById('resultTitle').textContent='Trail compromised'; document.getElementById('resultScore').textContent=`${correctAnswers} / ${totalQuestions}`; document.getElementById('resultDetail').textContent='You hit a boundary or your own trail. Restart to complete all 10 knowledge checks.'; document.getElementById('statusText').textContent='Try again'; showOnly(resultCard); }
+    function finish() { const passed=correctAnswers>8; document.getElementById('resultTitle').textContent=passed?'Skills validated':'Keep sharpening your skills'; document.getElementById('resultScore').textContent=`${correctAnswers} / ${totalQuestions}`; document.getElementById('resultDetail').textContent=passed?'Excellent work — you cleared the validation threshold.':'Review the topics and try again: you need more than 8 correct answers to validate your skills.'; document.getElementById('statusText').textContent=passed?'Skills validated':'Complete'; showOnly(resultCard); }
+    document.getElementById('startButton').onclick=start; document.getElementById('restartButton').onclick=()=>{document.getElementById('statusText').textContent='In progress'; showOnly(startCard); resetGame();};
+    addEventListener('keydown',e=>{const keys={ArrowUp:[0,-1],w:[0,-1],ArrowDown:[0,1],s:[0,1],ArrowLeft:[-1,0],a:[-1,0],ArrowRight:[1,0],d:[1,0]}; const move=keys[e.key]; if(move){e.preventDefault(); if(move[0]!==-direction.x||move[1]!==-direction.y) nextDirection={x:move[0],y:move[1]};}});
+    resetGame();
+  </script>
+</body>
+</html>
