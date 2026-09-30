@@ -29,6 +29,10 @@ Fifteen test contributor submissions are provided in [`samples/`](samples/): sel
 
 GitHub Pages serves static files only. Each browser therefore has its own `localStorage` and cannot see another person's changes in real time; this is intentional for the no-backend/offline design. The collaboration flow is: reviewer exports `catalogue.json` → contributors import it and export submissions → reviewer bulk-imports and reviews them → reviewer exports each reviewed file and the consolidated master backup. Real-time shared editing would require a backend/service (for example Microsoft 365, SharePoint, Firebase, or another approved company system) and cannot be added to a fully offline static page.
 
+## Tests
+
+Run `npm test` with Node.js 20 or later. The built-in Node test suite exercises the live inline application logic: targets, JSON validation, caps, totals, demo injection, standings, and submission state changes. GitHub Actions runs the same command for pull requests and pushes to `main`.
+
 ## GitHub Pages
 
 1. Commit and push this repository to GitHub.

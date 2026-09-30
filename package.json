@@ -1,0 +1,12 @@
+{
+  "name": "back-on-track-growth-challenge",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Offline-first Back on Track: Growth Challenge app checks",
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
