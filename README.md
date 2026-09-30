@@ -8,8 +8,8 @@ A self-contained, offline-first web app for Wavestone Luxembourg's **Back on Tra
 2. Use **Add** to record activities as drafts. The app calculates points and warns when an activity cap applies.
 3. Check progress on **Dashboard**. Both delivery and business targets must be met to earn Bronze (100%), Silver (115%), or Gold (130%).
 4. In **Data**, export your submission. This marks current drafts as Submitted and downloads `surname_firstname_YYYY-MM.json`.
-5. In **Data**, you can import a previously exported submission to restore or merge your own entries (the profile is restored if this browser has no profile yet). Import `catalogue.json` supplied by a reviewer when it changes, then later import that reviewer's `*_reviewed.json` to see decisions and comments.
-6. Use **Submission** to create the review JSON or choose **Report end of month to management**. This downloads the report and opens a pre-addressed email draft to `gianluca.pasolini@wavestone.com`; add optional CC recipients, then attach the downloaded JSON manually before sending.
+5. In **Data**, use the clearly labelled **Import my submission** button to restore or merge your own exported entries (the profile is restored if this browser has no profile yet). Use **Import catalogue** when a reviewer sends you a new `catalogue.json`.
+6. Use **Submission** to create the review JSON or choose **Report end of month to management**. This downloads the report and opens a pre-addressed email draft to `gianluca.pasolini@wavestone.com` only by default; add optional CC recipients, then attach the downloaded JSON manually before sending.
 
 ## Reviewer use
 
