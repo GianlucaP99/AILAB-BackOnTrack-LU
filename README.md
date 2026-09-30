@@ -17,7 +17,7 @@ A self-contained, offline-first web app for Wavestone Luxembourg's **Back on Tra
 2. In **Import**, drag in one or more contributor JSON submissions. The app validates them and preserves entries already imported.
 3. Review submissions in **Queue**; filters and bulk approval are available, and rejections require a comment.
 4. Use **Merge** to find likely duplicates and potential team wins. Linking and merging preserve an audit record.
-5. Use **Leaderboard** to view the league rankings, anonymise the display, export each reviewed contributor file, or download `master.json` and `master.csv`.
+5. Use **Leaderboard** to view the top three in each league, anonymise the public display, export each reviewed contributor file, or download `master.json` and `master.csv`. Use **Standings** for the complete ranked contributor list in both leagues.
 
 ## JSON flow and safety
 
