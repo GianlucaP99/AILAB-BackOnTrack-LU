@@ -10,6 +10,7 @@ A self-contained, offline-first web app for Wavestone Luxembourg's **Back on Tra
 4. In **Data**, export your submission. This marks current drafts as Submitted and downloads `surname_firstname_YYYY-MM.json`.
 5. In **Data**, you can import a previously exported submission to restore or merge your own entries (the profile is restored if this browser has no profile yet). Import `catalogue.json` supplied by a reviewer when it changes, then later import that reviewer's `*_reviewed.json` to see decisions and comments.
 
+
 ## Reviewer use
 
 1. Choose **Reviewer** (this is deliberately not authentication), then manage activities under **Catalogue** and export `catalogue.json` for contributors.
