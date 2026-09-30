@@ -1,0 +1,5 @@
+{
+  "schemaVersion": 1, "app": "road-to-target", "type": "contributor-submission", "exportedAt": "2026-10-31T16:00:00.000Z",
+  "profile": {"name":"Sarah Pinto","email":"sarah.pinto@example.com","grade":"Consultant","reviewer":"Marie Reviewer"},
+  "entries": [{"id":"sample-pinto_sarah-1","activityId":"act-5","date":"2026-10-15","quantity":2,"proof":"October demo activity 13","comment":"Sample submission","points":2,"status":"Submitted","createdAt":"2026-10-15T16:00:00.000Z","updatedAt":"2026-10-15T16:00:00.000Z"}], "audit": []
+}

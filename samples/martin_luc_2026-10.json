@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "app": "road-to-target",
+  "type": "contributor-submission",
+  "exportedAt": "2026-10-31T16:05:00.000Z",
+  "profile": {"name":"Luc Martin","email":"luc.martin@example.com","grade":"Senior Consultant","reviewer":"Marie Reviewer"},
+  "entries": [
+    {"id":"sample-luc-1","activityId":"act-1","date":"2026-10-09","quantity":12,"proof":"October billable delivery","comment":"","points":12,"status":"Submitted","createdAt":"2026-10-09T17:00:00.000Z","updatedAt":"2026-10-09T17:00:00.000Z"},
+    {"id":"sample-luc-2","activityId":"act-14","date":"2026-10-24","quantity":1,"proof":"Project Aurora proposal","comment":"Team bid","points":1,"status":"Submitted","createdAt":"2026-10-24T17:00:00.000Z","updatedAt":"2026-10-24T17:00:00.000Z"}
+  ], "audit": []
+}

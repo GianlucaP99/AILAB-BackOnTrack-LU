@@ -1,0 +1,5 @@
+{
+  "schemaVersion": 1, "app": "road-to-target", "type": "contributor-submission", "exportedAt": "2026-10-31T16:00:00.000Z",
+  "profile": {"name":"Hugo Wagner","email":"hugo.wagner@example.com","grade":"Manager","reviewer":"Marie Reviewer"},
+  "entries": [{"id":"sample-wagner_hugo-1","activityId":"act-15","date":"2026-10-12","quantity":1,"proof":"October demo activity 10","comment":"Sample submission","points":1,"status":"Submitted","createdAt":"2026-10-12T16:00:00.000Z","updatedAt":"2026-10-12T16:00:00.000Z"}], "audit": []
+}
