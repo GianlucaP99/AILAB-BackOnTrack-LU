@@ -4,11 +4,12 @@ A self-contained, offline-first web app for Wavestone Luxembourg's **Back on Tra
 
 ## Contributor use
 
-1. Choose **Contributor**, complete **Profile**, and save it.
+1. Choose **Contributor**, complete **Profile**, and save it. Name, email, and grade are required before activities can be added, so every activity is correctly linked to your activity list.
 2. Use **Add** to record activities as drafts. The app calculates points and warns when an activity cap applies.
 3. Check progress on **Dashboard**. Both delivery and business targets must be met to earn Bronze (100%), Silver (115%), or Gold (130%).
 4. In **Data**, export your submission. This marks current drafts as Submitted and downloads `surname_firstname_YYYY-MM.json`.
-5. Import `catalogue.json` supplied by a reviewer when it changes, then later import that reviewer's `*_reviewed.json` to see decisions and comments.
+5. In **Data**, you can import a previously exported submission to restore or merge your own entries (the profile is restored if this browser has no profile yet). Import `catalogue.json` supplied by a reviewer when it changes, then later import that reviewer's `*_reviewed.json` to see decisions and comments.
+
 
 ## Reviewer use
 
