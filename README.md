@@ -1,6 +1,6 @@
-# Road to Target
+# Back on Track: Growth Challenge
 
-A self-contained, offline-first web app for Wavestone Luxembourg's **Back on Track** game (1 October–31 December 2026). Open `index.html` directly in a modern browser or host it on GitHub Pages. No server, account, CDN, or network connection is required.
+A self-contained, offline-first web app for Wavestone Luxembourg's **Back on Track: Growth Challenge** (1 October–31 December 2026). Open `index.html` directly in a modern browser or host it on GitHub Pages. No server, account, CDN, or network connection is required.
 
 ## Contributor use
 
