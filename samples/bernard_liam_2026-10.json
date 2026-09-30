@@ -1,0 +1,5 @@
+{
+  "schemaVersion": 1, "app": "road-to-target", "type": "contributor-submission", "exportedAt": "2026-10-31T16:00:00.000Z",
+  "profile": {"name":"Liam Bernard","email":"liam.bernard@example.com","grade":"Senior Manager","reviewer":"Marie Reviewer"},
+  "entries": [{"id":"sample-bernard_liam-1","activityId":"act-1","date":"2026-10-08","quantity":12,"proof":"October demo activity 6","comment":"Sample submission","points":12,"status":"Submitted","createdAt":"2026-10-08T16:00:00.000Z","updatedAt":"2026-10-08T16:00:00.000Z"}], "audit": []
+}

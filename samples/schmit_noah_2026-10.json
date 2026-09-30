@@ -1,0 +1,5 @@
+{
+  "schemaVersion": 1, "app": "road-to-target", "type": "contributor-submission", "exportedAt": "2026-10-31T16:00:00.000Z",
+  "profile": {"name":"Noah Schmit","email":"noah.schmit@example.com","grade":"Manager","reviewer":"Marie Reviewer"},
+  "entries": [{"id":"sample-schmit_noah-1","activityId":"act-5","date":"2026-10-06","quantity":2,"proof":"October demo activity 4","comment":"Sample submission","points":2,"status":"Submitted","createdAt":"2026-10-06T16:00:00.000Z","updatedAt":"2026-10-06T16:00:00.000Z"}], "audit": []
+}
