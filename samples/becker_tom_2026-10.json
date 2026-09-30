@@ -1,0 +1,5 @@
+{
+  "schemaVersion": 1, "app": "road-to-target", "type": "contributor-submission", "exportedAt": "2026-10-31T16:00:00.000Z",
+  "profile": {"name":"Tom Becker","email":"tom.becker@example.com","grade":"Manager","reviewer":"Marie Reviewer"},
+  "entries": [{"id":"sample-becker_tom-1","activityId":"act-1","date":"2026-10-16","quantity":10,"proof":"October demo activity 14","comment":"Sample submission","points":10,"status":"Submitted","createdAt":"2026-10-16T16:00:00.000Z","updatedAt":"2026-10-16T16:00:00.000Z"}], "audit": []
+}

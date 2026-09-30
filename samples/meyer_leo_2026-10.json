@@ -1,0 +1,5 @@
+{
+  "schemaVersion": 1, "app": "road-to-target", "type": "contributor-submission", "exportedAt": "2026-10-31T16:00:00.000Z",
+  "profile": {"name":"Leo Meyer","email":"leo.meyer@example.com","grade":"Senior Consultant","reviewer":"Marie Reviewer"},
+  "entries": [{"id":"sample-meyer_leo-1","activityId":"act-1","date":"2026-10-14","quantity":11,"proof":"October demo activity 12","comment":"Sample submission","points":11,"status":"Submitted","createdAt":"2026-10-14T16:00:00.000Z","updatedAt":"2026-10-14T16:00:00.000Z"}], "audit": []
+}
