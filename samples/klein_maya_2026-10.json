@@ -1,0 +1,5 @@
+{
+  "schemaVersion": 1, "app": "road-to-target", "type": "contributor-submission", "exportedAt": "2026-10-31T16:00:00.000Z",
+  "profile": {"name":"Maya Klein","email":"maya.klein@example.com","grade":"Analyst","reviewer":"Marie Reviewer"},
+  "entries": [{"id":"sample-klein_maya-1","activityId":"act-24","date":"2026-10-13","quantity":1,"proof":"October demo activity 11","comment":"Sample submission","points":1,"status":"Submitted","createdAt":"2026-10-13T16:00:00.000Z","updatedAt":"2026-10-13T16:00:00.000Z"}], "audit": []
+}

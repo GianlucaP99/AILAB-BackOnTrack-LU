@@ -1,0 +1,5 @@
+{
+  "schemaVersion": 1, "app": "road-to-target", "type": "contributor-submission", "exportedAt": "2026-10-31T16:00:00.000Z",
+  "profile": {"name":"Max Hansen","email":"max.hansen@example.com","grade":"Senior Consultant","reviewer":"Marie Reviewer"},
+  "entries": [{"id":"sample-hansen_max-1","activityId":"act-14","date":"2026-10-10","quantity":1,"proof":"October demo activity 8","comment":"Sample submission","points":1,"status":"Submitted","createdAt":"2026-10-10T16:00:00.000Z","updatedAt":"2026-10-10T16:00:00.000Z"}], "audit": []
+}
