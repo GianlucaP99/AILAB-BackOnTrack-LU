@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "app": "road-to-target",
+  "type": "contributor-submission",
+  "exportedAt": "2026-10-31T16:00:00.000Z",
+  "profile": {"name":"Amélie Dupont","email":"amelie.dupont@example.com","grade":"Consultant","reviewer":"Marie Reviewer"},
+  "entries": [
+    {"id":"sample-amelie-1","activityId":"act-1","date":"2026-10-06","quantity":10,"proof":"October billable delivery","comment":"","points":10,"status":"Submitted","createdAt":"2026-10-06T17:00:00.000Z","updatedAt":"2026-10-06T17:00:00.000Z"},
+    {"id":"sample-amelie-2","activityId":"act-12","date":"2026-10-17","quantity":2,"proof":"Project Aurora proposal","comment":"Bid support","points":2,"status":"Submitted","createdAt":"2026-10-17T17:00:00.000Z","updatedAt":"2026-10-17T17:00:00.000Z"}
+  ], "audit": []
+}
