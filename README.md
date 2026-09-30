@@ -9,7 +9,7 @@ A self-contained, offline-first web app for Wavestone Luxembourg's **Back on Tra
 3. Check progress on **Dashboard**. Both delivery and business targets must be met to earn Bronze (100%), Silver (115%), or Gold (130%).
 4. In **Data**, export your submission. This marks current drafts as Submitted and downloads `surname_firstname_YYYY-MM.json`.
 5. In **Data**, you can import a previously exported submission to restore or merge your own entries (the profile is restored if this browser has no profile yet). Import `catalogue.json` supplied by a reviewer when it changes, then later import that reviewer's `*_reviewed.json` to see decisions and comments.
-
+6. Use **Submission** to create the review JSON or choose **Report end of month to management**. This downloads the report and opens a pre-addressed email draft to `gianluca.pasolini@wavestone.com`; add optional CC recipients, then attach the downloaded JSON manually before sending.
 
 ## Reviewer use
 
@@ -23,7 +23,11 @@ A self-contained, offline-first web app for Wavestone Luxembourg's **Back on Tra
 
 Every exported JSON document contains `schemaVersion: 1`, the `road-to-target` application marker, unique entry IDs, timestamps, and audit fields. Files are validated on import and errors are shown without replacing data. Browser data is held in `localStorage`; export `master.json` regularly as a backup. **Reset local data** permanently clears only this app's browser data after confirmation.
 
-Test files are provided in [`samples/`](samples/): import both files through the Reviewer **Import** screen to try the queue and leaderboard.
+Fifteen test contributor submissions are provided in [`samples/`](samples/): select or drop them together through the Reviewer **Import** screen to try bulk import, the queue, and leaderboard. The Reviewer **Import** screen also has an **Inject 15 demo submissions** button for a one-click local demo.
+
+## Collaboration and shared data
+
+GitHub Pages serves static files only. Each browser therefore has its own `localStorage` and cannot see another person's changes in real time; this is intentional for the no-backend/offline design. The collaboration flow is: reviewer exports `catalogue.json` → contributors import it and export submissions → reviewer bulk-imports and reviews them → reviewer exports each reviewed file and the consolidated master backup. Real-time shared editing would require a backend/service (for example Microsoft 365, SharePoint, Firebase, or another approved company system) and cannot be added to a fully offline static page.
 
 ## GitHub Pages
 

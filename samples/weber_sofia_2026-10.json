@@ -1,0 +1,5 @@
+{
+  "schemaVersion": 1, "app": "road-to-target", "type": "contributor-submission", "exportedAt": "2026-10-31T16:00:00.000Z",
+  "profile": {"name":"Sofia Weber","email":"sofia.weber@example.com","grade":"Analyst","reviewer":"Marie Reviewer"},
+  "entries": [{"id":"sample-weber_sofia-1","activityId":"act-1","date":"2026-10-05","quantity":8,"proof":"October demo activity 3","comment":"Sample submission","points":8,"status":"Submitted","createdAt":"2026-10-05T16:00:00.000Z","updatedAt":"2026-10-05T16:00:00.000Z"}], "audit": []
+}
