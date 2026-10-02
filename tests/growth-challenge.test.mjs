@@ -4,7 +4,7 @@ import test from 'node:test';
 import vm from 'node:vm';
 
 const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
-const match = html.match(/<script>([\s\S]*?)<\/script>/);
+const match = html.match(/<script>([\s\S]*?)<\/script>/i);
 assert.ok(match, 'index.html must contain the application script');
 
 let proofValue = '';
